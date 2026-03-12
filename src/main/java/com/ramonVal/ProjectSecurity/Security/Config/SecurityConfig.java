@@ -33,6 +33,8 @@ public class SecurityConfig {
     return security
       .csrf(csrf -> csrf.disable())
       .httpBasic(Customizer.withDefaults())
+      .formLogin(Customizer.withDefaults())
+      .oauth2Login(Customizer.withDefaults())
       .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
       .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
       .build();
